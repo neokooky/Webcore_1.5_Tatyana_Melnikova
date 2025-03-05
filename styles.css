@@ -333,10 +333,7 @@ a:hover {
     padding: 32px 24px;
 }
 
-.feedback__list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.main-nav__feedback {
     margin-bottom: 16px;
 }
 
@@ -410,6 +407,9 @@ a:hover {
         display: flex;
         align-items: center;
         gap: 16px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
     }
 
     .services-menu__title {

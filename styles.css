@@ -42,35 +42,39 @@ body {
     background-color: rgba(248, 248, 248, 1);
 }
 
-.container {
+.hidden {
+    display: none;
+}
+
+.page {
     min-width: 288px;
-    max-width: 1052px;
+    max-width: 1120px;
     margin: 0 auto;
+    overflow: hidden;
+}
+
+.list-reset{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.h1,
+.h2 {
+    margin: 0;
 }
 
 .button__image {
     display: block;
 }
 
-/* a {
-    color: inherit;
+.link {
     text-decoration: none;
+    color: inherit;
     background-color: transparent;
     cursor: pointer;
+    font-style: normal;
 }
-
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-h1, h2, p, ul {
-    margin: 0;
-}
-
-a:hover {
-    font-family: 'TT Lakes Medium';
-} */
 
 .button {
     font-family: "TT Lakes Medium";
@@ -82,6 +86,7 @@ a:hover {
     align-items: center;
 }
 
+.link:hover,
 .button:hover {
     opacity: 0.7;
     transition-duration: 0.2s;
@@ -154,6 +159,12 @@ a:hover {
 }
 
 .feedback {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.header__feedback {
     display: none;
 }
 
@@ -208,7 +219,6 @@ a:hover {
 
 .slide-menu__link {
     font-size: 16px;
-    text-decoration: none;
     color: rgba(126, 126, 130, 1);
     cursor: pointer;
 }
@@ -222,13 +232,13 @@ a:hover {
 
 
 .hero__paragraph,
-.button--view-more {
+.hero__button--view-more {
     margin: 0 16px 16px;
 }
 
 .button--view-more {
-    position: relative;
     padding-left: 15px;
+    position: relative;
     font-size: 16px;
 }
 
@@ -242,6 +252,11 @@ a:hover {
     border-right: 2px solid rgba(65, 246, 215, 1);
     border-bottom: 2px solid rgba(65, 246, 215, 1);
     transform: translateY(-50%) rotate(45deg);
+    transition: 0.2s;
+}
+
+.button--view-more.rotate-decor::after {
+    transform: rotate(225deg);
 }
 
 .button--view-more::before {
@@ -254,6 +269,11 @@ a:hover {
     border-right: 2px solid rgba(65, 246, 215, 1);
     border-bottom: 2px solid rgba(65, 246, 215, 1);
     transform: translateY(-50%) rotate(45deg);
+    transition: 0.2s;
+}
+
+.button--view-more.rotate-decor::before {
+    transform: rotate(225deg);
 }
 
 .hero__paragraph {
@@ -275,8 +295,11 @@ a:hover {
 
 .main-nav {
     width: 320px;
-    border: 1px solid black;
+    position: fixed;
+    left: 0;
     font-family: 'TT Lakes Medium';
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 16px 0 52px 0 rgba(14, 24, 80, 0.2), -2px 0 4px 0 rgba(69, 79, 126, 0.02);
 }
 
 .main-nav__header {
@@ -303,11 +326,6 @@ a:hover {
 .main-nav__link {
     text-decoration: none;
     color: inherit;
-}
-
-.main-nav__link:hover {
-    opacity: 0.7;
-    transition-duration: 0.2s;
 }
 
 .main-nav__link--active {
@@ -359,8 +377,7 @@ a:hover {
     transition-duration: 0.2s;
 }
 
-.language__list {
-    list-style: none;
+.main-nav__language {
     padding: 0;
     margin: 0;
     display: flex;
@@ -376,8 +393,90 @@ a:hover {
 }
 
 
+/* Brands */
+
+
+.page__brands{
+    padding: 15px 16px;
+    border-top: 2px solid rgba(217, 255, 245, 1);
+}
+
+.brands__title {
+    font-size: 16px;
+    color: rgba(126, 126, 130, 1);
+    text-transform: uppercase;
+    margin-bottom: 32px;
+}
+
+.brands__list {
+    display: flex;
+    gap: 16px;
+}
+
+.brands__item {
+    box-sizing: border-box;
+    width: 224px;
+    border: 2px solid rgba(234, 234, 234, 1);
+    height: 72px;
+    border-radius: 6px;
+    padding-inline: 16px;
+}
+
+.brands__link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 72px;
+}
+
+
+/* Swiper */
+
+
+.brands-swiper {
+    position: relative;
+    width: 100%;
+    height: 110px;
+    overflow: hidden;
+}
+
+.swiper-slide {
+    width: 224px;
+}
+
+.brands-swiper .swiper-pagination {
+    position: absolute;
+    bottom: 0;
+}
+
+.swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(176, 176, 176, 1);
+    margin-inline: 0;
+}
+
+.swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet:not(:last-child) {
+    margin-right: 10px;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: rgba(181, 182, 188, 1);
+}
+
+.hidden {
+    display: none;
+}
+
+
 /* Media */
 
+
+@media (max-width: 767px) {
+    .brands__button-view--more {
+        display: none;
+    }
+}
 
 @media (min-width: 768px) {
     .header__burger-button {
@@ -399,15 +498,11 @@ a:hover {
         top: 5px;
     }
 
-    .feedback {
-        display: block;
+    .header__feedback {
+        display: flex;
     }
 
-    .feedback__list {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        list-style: none;
+    .header__feedback {
         padding: 0;
         margin: 0;
     }
@@ -457,6 +552,24 @@ a:hover {
         margin: 0;
         margin-bottom: 16px;
     }
+
+    .page__brands{
+        padding: 15px 24px;
+    }    
+
+    .brands__list {
+        flex-wrap: wrap;
+        margin-bottom: 24px;
+        column-gap: 24px;
+    }
+
+    .brands-swiper {
+        height: auto;
+    }
+
+/*     .swiper-pagination {
+        display: none;
+    } */
 }
 
 
@@ -521,5 +634,13 @@ a:hover {
 
     .hero__paragraph:not(:first-child) {
         display: block;
+    }
+    
+    .page__brands{
+        padding: 15px 32px;
+    }
+
+    .brands__list {
+        column-gap: 32px;
     }
 }
